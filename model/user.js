@@ -16,6 +16,9 @@ const userSchema = new Schema({
     },
     room:{
         type:Number
+    },
+    ref_room:{
+        type:Number
     }
 })
 

@@ -11,6 +11,7 @@ app.get("/",(req,res)=>{
 app.use(express.json())
 app.use('/api',require("./Routes/createUser"));
 app.use('/api',require("./Routes/roomData"));
+app.use('/api',require("./Routes/createroom"));
 
 
 app.listen(port,()=>{
