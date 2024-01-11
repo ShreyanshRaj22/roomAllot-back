@@ -8,3 +8,5 @@ router.post('/roomData',(req,res)=>{
         
     }
 })
+
+module.exports = router;

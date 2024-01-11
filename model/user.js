@@ -15,8 +15,7 @@ const userSchema = new Schema({
         required:true
     },
     room:{
-        type:Number,
-        required:true
+        type:Number
     }
 })
 
