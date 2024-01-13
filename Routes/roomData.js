@@ -19,7 +19,7 @@ router.post('/selectRoom', async (req,res)=>{
         }
         await User.updateOne({email:useremail},newData)
         
-        const roomData = [req.body.name,useremail];
+        const roomData = useremail;
         await Room.updateOne({num:req.body.num},{$push:{room_data:roomData}});
         
         res.json({ success: true });
