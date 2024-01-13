@@ -4,6 +4,18 @@ const port = 5000 || process.env.PORT
 const mongoDB = require("./db")
 mongoDB();
 
+
+const cors = require("cors");
+app.use(cors())
+const corsOptions ={
+   origin:'*', 
+   credentials:true,      
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions))
+
+
 app.get("/",(req,res)=>{
     res.send("Server is live and running as well as it should")
 })
