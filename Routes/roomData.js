@@ -57,5 +57,28 @@ router.get("/refRoom", async (req, res) => {
     }
 });
 
+router.get('/countRooms', async (req, res) => {
+    try {
+        // Query MongoDB to find rooms where room_data array size is less than 5
+        const rooms = await Room.find({
+            $expr: { $lt: [{ $size: '$room_data' }, 5] }
+        });
+
+        // Sort the rooms based on the num property
+        rooms.sort((a, b) => a.num - b.num);
+
+        const resultArray = rooms.map(room => ({
+            num: room.num,
+            sizeDifference: 5 - room.room_data.length
+        }));
+
+        res.json({ count: rooms.length, rooms: resultArray });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 
 module.exports = router;
