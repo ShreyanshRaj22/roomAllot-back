@@ -41,4 +41,21 @@ router.post("/referRoom", async (req,res)=>{
     }
 })
 
+router.get("/refRoom", async (req, res) => {
+    try {
+        const userEmail = req.query.email; // Use req.query to get parameters from the URL
+        const user = await User.findOne({ email: userEmail });
+
+        if (user) {
+            res.json({ ref: user.ref_room, success: true });
+        } else {
+            res.status(404).json({ error: 'User Not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false });
+    }
+});
+
+
 module.exports = router;
