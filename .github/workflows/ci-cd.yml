@@ -1,4 +1,4 @@
-name: Node.js CICD
+name: Node.js CI/CD
 
 on:
   push:
@@ -20,3 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Run Tests
+        run: npm test
